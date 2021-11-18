@@ -12,8 +12,8 @@ yarn clean
 
 sleep 1
 
-echo ">> changing semantic version $version to $next_version"
 next_version=$(npx semver $version -i $mode)
+echo ">> changing semantic version $version to $next_version"
 package_raw=$(cat $package_json)
 package_raw=$(echo ${package_raw/"$version"/"$next_version"})
 echo $package_raw | npx json > $package_json
