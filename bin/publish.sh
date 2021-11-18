@@ -1,6 +1,7 @@
 #!/bin/bash
 
-version=$(cat package.json|grep version|cut -d ' ' -f 4|cut -d '"' -f 2)
+package_json='package.json'
+version=$(cat $package_json | grep version | cut -d ' ' -f 4 | cut -d '"' -f 2)
 mode=${1:-'patch'}
 
 echo
@@ -11,8 +12,11 @@ yarn clean
 
 sleep 1
 
-next_version=$(npx semver $version -i $mode)
 echo ">> changing semantic version $version to ${next_version}"
+next_version=$(npx semver $version -i $mode)
+package_raw=$(cat $package_json)
+package_raw=$(echo ${package_raw/"$version"/"$next_version"})
+echo $package_raw > $package_json
 
 sleep 1
 
