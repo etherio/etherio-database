@@ -30,7 +30,8 @@ echo
 echo ">> Pushing v$version to Github"
 git add --all
 git commit -m "[publish:$mode]"
-git push origin master
+git tag v$next_version
+git push origin master --tag v$next_version
 
 sleep 1
 
