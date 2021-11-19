@@ -11,7 +11,10 @@ export declare class AxiosProvider implements DatabaseProvider {
     orderByChild(child: string): Query;
     limitToFirst(limit: number): Query;
     limitToLast(limit: number): Query;
+    equalTo(value: string): Query;
+    startAt(value: string): Query;
+    endAt(value: string): Query;
     get(ref: Reference): Promise<Document>;
-    list(ref: Reference): Promise<Collection>;
+    list(ref: Reference, toArray?: boolean): Promise<Collection | Document[]>;
 }
 //# sourceMappingURL=AxiosProvider.d.ts.map

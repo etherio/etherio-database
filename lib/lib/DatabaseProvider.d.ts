@@ -9,7 +9,10 @@ export interface DatabaseProvider {
     orderByChild(child: string): Query;
     limitToLast(limit: number): Query;
     limitToFirst(limit: number): Query;
+    equalTo(value: string): Query;
+    startAt(value: string): Query;
+    endAt(value: string): Query;
     get(ref: Reference): Promise<Document>;
-    list(ref: Reference): Promise<Collection>;
+    list(ref: Reference, toArray: boolean): Promise<Collection | Document[]>;
 }
 //# sourceMappingURL=DatabaseProvider.d.ts.map
