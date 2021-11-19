@@ -35,7 +35,7 @@ export class Reference {
     return this.provider.get(this);
   }
 
-  list() {
-    return this.provider.list(this);
+  list(toArray = false) {
+    return this.provider.list(this, toArray);
   }
 }

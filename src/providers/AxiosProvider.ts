@@ -59,7 +59,7 @@ export class AxiosProvider implements DatabaseProvider {
     return axios.get(url).then(({ data }) => new Document(data));
   }
 
-  list(ref: Reference, toArray = true): Promise<Collection | Document[]> {
+  list(ref: Reference, toArray: boolean): Promise<Collection | Document[]> {
     let url = `${this.databaseUrl}/${ref.path}.json?${this.params.toString()}`;
     return axios
       .get(url)

@@ -11,6 +11,6 @@ export declare class Reference {
     orderByValue(): Query;
     orderByChild(child: string): Query;
     get(): Promise<Document>;
-    list(): Promise<Collection | Document[]>;
+    list(toArray?: boolean): Promise<Collection | Document[]>;
 }
 //# sourceMappingURL=Reference.d.ts.map
