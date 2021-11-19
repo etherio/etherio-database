@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "clean": "rimraf dist",
-    "dev": "nodemon tests/main.test.ts"
+    "dev": "nodemon -r dotenv/config tests/main.test.ts"
   },
   "keywords": [
     "firebase",
@@ -19,7 +19,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "eslint": "^8.2.0",
+    "@types/node": "^16.11.8",
+    "dotenv": "^10.0.0",
     "nodemon": "^2.0.15",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",

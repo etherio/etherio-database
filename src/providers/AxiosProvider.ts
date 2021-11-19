@@ -4,20 +4,48 @@ import { Document } from "../lib/Document";
 import { DatabaseProvider, Query, Reference } from "../main";
 
 export class AxiosProvider implements DatabaseProvider {
-  constructor(
-    private readonly databaseUrl: string,
-    private readonly secret: string
-  ) {}
+  private readonly params = new URLSearchParams();
+
+  constructor(private readonly databaseUrl: string, secret: string) {
+    this.params.append("auth", secret);
+  }
+
+  ref(path: string): Reference {
+    return new Reference(this, path);
+  }
+
+  orderByKey(): Query {
+    this.params.append("orderBy", '"$key"');
+    return new Query(this);
+  }
+
+  orderByValue(): Query {
+    this.params.append("orderBy", '"$value"');
+    return new Query(this);
+  }
+
+  orderByChild(child: string): Query {
+    this.params.append("orderBy", '"' + child + '"');
+    return new Query(this);
+  }
+
+  limitToFirst(limit: number): Query {
+    this.params.append("limitToFirst", limit.toString());
+    return new Query(this);
+  }
+
+  limitToLast(limit: number): Query {
+    this.params.append("limitToLast", limit.toString());
+    return new Query(this);
+  }
 
   get(ref: Reference): Promise<Document> {
-    ref.params.append("auth", this.secret);
-    let url = `${this.databaseUrl}/${ref.path}.json?${ref.params.toString()}`;
+    let url = `${this.databaseUrl}/${ref.path}.json?${this.params.toString()}`;
     return axios.get(url).then(({ data }) => new Document(data));
   }
 
   list(ref: Reference): Promise<Collection> {
-    ref.params.append("auth", this.secret);
-    let url = `${this.databaseUrl}/${ref.path}.json?${ref.params.toString()}`;
+    let url = `${this.databaseUrl}/${ref.path}.json?${this.params.toString()}`;
     return axios.get(url).then(({ data }) => new Collection(data));
   }
 }

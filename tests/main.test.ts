@@ -1,15 +1,22 @@
+import { env } from "process";
 import { Database } from "../src/main";
 import { AxiosProvider } from "../src/providers/AxiosProvider";
 
-const provider = new AxiosProvider("", "");
+const databaseURL: string = env.FIREBASE_DATABASE_URL || "";
+const databaseSecret: string = env.FIREBASE_DATABASE_SECRET || "";
+
+const provider = new AxiosProvider(databaseURL, databaseSecret);
 
 const toJSON = (obj: any) => JSON.parse(JSON.stringify(obj));
 
 const db = new Database(provider);
-const productRef = db.ref("products");
-const q = productRef.orderByKey().limitToLast(15);
+const dbRef = db.ref("transactions");
 
-q.list().then((collection) => {
-  let products = collection.toArray();
-  console.log(toJSON(products));
+let q = dbRef.orderByKey().limitToLast(15);
+
+q.list().then((collection: any) => {
+  let data = collection.toArray();
+  console.log(toJSON(data));
 });
+
+console.log(q);

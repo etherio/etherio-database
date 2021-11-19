@@ -1,8 +1,15 @@
 import { Collection } from "./Collection";
 import { Document } from "./Document";
+import { Query } from "./Query";
 import { Reference } from "./Reference";
 
 export interface DatabaseProvider {
+  ref(path: string): Reference;
+  orderByKey(): Query;
+  orderByValue(): Query;
+  orderByChild(child: string): Query;
+  limitToLast(limit: number): Query;
+  limitToFirst(limit: number): Query;
   get(ref: Reference): Promise<Document>;
   list(ref: Reference): Promise<Collection>;
 }
