@@ -39,13 +39,32 @@ export class AxiosProvider implements DatabaseProvider {
     return new Query(this);
   }
 
+  equalTo(value: string): Query {
+    this.params.append("equalTo", value);
+    return new Query(this);
+  }
+
+  startAt(value: string): Query {
+    this.params.append("startAt", value);
+    return new Query(this);
+  }
+
+  endAt(value: string): Query {
+    this.params.append("endAt", value);
+    return new Query(this);
+  }
+
   get(ref: Reference): Promise<Document> {
     let url = `${this.databaseUrl}/${ref.path}.json?${this.params.toString()}`;
     return axios.get(url).then(({ data }) => new Document(data));
   }
 
-  list(ref: Reference): Promise<Collection> {
+  list(ref: Reference, toArray = true): Promise<Collection | Document[]> {
     let url = `${this.databaseUrl}/${ref.path}.json?${this.params.toString()}`;
-    return axios.get(url).then(({ data }) => new Collection(data));
+    return axios
+      .get(url)
+      .then(({ data }) =>
+        toArray ? new Collection(data).toArray() : new Collection(data)
+      );
   }
 }
