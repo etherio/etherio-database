@@ -1,8 +1,8 @@
 {
   "name": "@etherio/database",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Utilities for Firebase Realtime Database",
-  "main": "dist/main.js",
+  "main": "lib/main.js",
   "engines": {
     "node": ">10.0.0"
   },
@@ -11,6 +11,9 @@
     "clean": "rimraf dist",
     "dev": "nodemon -r dotenv/config tests/main.test.ts"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "keywords": [
     "firebase",
     "database"
