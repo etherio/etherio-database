@@ -53,7 +53,7 @@ export class Reference {
     return this.provider.get(this);
   }
 
-  list(toArray = false) {
-    return this.provider.list(this, toArray);
+  list() {
+    return this.provider.list(this);
   }
 }

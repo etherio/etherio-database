@@ -14,6 +14,6 @@ export declare class Reference {
     startAt(value: string): Query;
     endAt(value: string): Query;
     get(): Promise<Document>;
-    list(toArray?: boolean): Promise<Collection | Document[]>;
+    list(): Promise<Collection | Document[]>;
 }
 //# sourceMappingURL=Reference.d.ts.map
