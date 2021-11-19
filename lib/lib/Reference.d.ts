@@ -10,6 +10,9 @@ export declare class Reference {
     orderByKey(): Query;
     orderByValue(): Query;
     orderByChild(child: string): Query;
+    equalTo(value: string): Query;
+    startAt(value: string): Query;
+    endAt(value: string): Query;
     get(): Promise<Document>;
     list(toArray?: boolean): Promise<Collection | Document[]>;
 }

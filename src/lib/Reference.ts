@@ -31,6 +31,24 @@ export class Reference {
     return queryRef;
   }
 
+  equalTo(value: string): Query {
+    const queryRef = this.provider.equalTo(value);
+    queryRef.path = this.path;
+    return queryRef;
+  }
+
+  startAt(value: string): Query {
+    const queryRef = this.provider.startAt(value);
+    queryRef.path = this.path;
+    return queryRef;
+  }
+
+  endAt(value: string): Query {
+    const queryRef = this.provider.endAt(value);
+    queryRef.path = this.path;
+    return queryRef;
+  }
+
   get() {
     return this.provider.get(this);
   }

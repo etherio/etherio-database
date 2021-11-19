@@ -40,17 +40,17 @@ export class AxiosProvider implements DatabaseProvider {
   }
 
   equalTo(value: string): Query {
-    this.params.append("equalTo", value);
+    this.params.append("equalTo", '"' + value + '"');
     return new Query(this);
   }
 
   startAt(value: string): Query {
-    this.params.append("startAt", value);
+    this.params.append("startAt", '"' + value + '"');
     return new Query(this);
   }
 
   endAt(value: string): Query {
-    this.params.append("endAt", value);
+    this.params.append("endAt", '"' + value + '"');
     return new Query(this);
   }
 

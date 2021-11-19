@@ -1,6 +1,6 @@
 {
   "name": "@etherio/database",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Utilities for Firebase Realtime Database",
   "main": "lib/main.js",
   "engines": {
