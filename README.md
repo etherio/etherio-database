@@ -25,10 +25,13 @@ $ yarn add @etherio/database
 
 ### Use Provider
 
-#### AxiosProvider(`databaseURL`, `auth`)
+#### AxiosProvider
 
 ```ts
-const provider = new AxiosProvider("https://<your-project-id>-default-rtdb.firebaseio.com", "<auth-or-secret>")
+const provider = new AxiosProvider(
+    "https://<your-project-id>-default-rtdb.firebaseio.com",
+     "<auth-or-secret>" // [optional]
+)
 const database = new Database(provider)
 ```
 
