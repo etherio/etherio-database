@@ -1,8 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AxiosProvider = void 0;
-var tslib_1 = require("tslib");
-var axios_1 = (0, tslib_1.__importDefault)(require("axios"));
+var axios_1 = __importDefault(require("axios"));
 var Collection_1 = require("../lib/Collection");
 var Document_1 = require("../lib/Document");
 var main_1 = require("../main");
