@@ -15,6 +15,6 @@ export declare class AxiosProvider implements DatabaseProvider {
     startAt(value: string): Query;
     endAt(value: string): Query;
     get(ref: Reference): Promise<Document>;
-    list(ref: Reference): Promise<Collection | Document[]>;
+    list(ref: Reference): Promise<Collection>;
 }
 //# sourceMappingURL=AxiosProvider.d.ts.map

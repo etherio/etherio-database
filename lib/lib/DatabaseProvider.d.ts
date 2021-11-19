@@ -13,6 +13,6 @@ export interface DatabaseProvider {
     startAt(value: string): Query;
     endAt(value: string): Query;
     get(ref: Reference): Promise<Document>;
-    list(ref: Reference): Promise<Collection | Document[]>;
+    list(ref: Reference): Promise<Collection>;
 }
 //# sourceMappingURL=DatabaseProvider.d.ts.map
