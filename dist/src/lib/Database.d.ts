@@ -1,7 +1,7 @@
 import { DatabaseProvider } from "./DatabaseProvider";
 import { Reference } from "./Reference";
 export declare class Database {
-    protected readonly provider: DatabaseProvider;
+    private readonly provider;
     constructor(provider: DatabaseProvider);
     ref(path: string): Reference;
 }

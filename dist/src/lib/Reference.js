@@ -1,30 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Reference = void 0;
-var Query_1 = require("./Query");
 var Reference = (function () {
-    function Reference(database, path) {
-        this.database = database;
+    function Reference(provider, path) {
+        this.provider = provider;
         this.path = path;
-        this.params = new URLSearchParams();
     }
     Reference.prototype.child = function (path) {
-        return new Reference(this.database, [this.path, path].join("/"));
+        return new Reference(this.provider, [this.path, path].join("/"));
     };
     Reference.prototype.orderByKey = function () {
-        return new Query_1.Query(this).orderBy('"$key"');
+        var queryRef = this.provider.orderByKey();
+        queryRef.path = this.path;
+        return queryRef;
     };
     Reference.prototype.orderByValue = function () {
-        return new Query_1.Query(this).orderBy("value");
+        var queryRef = this.provider.orderByValue();
+        queryRef.path = this.path;
+        return queryRef;
     };
     Reference.prototype.orderByChild = function (child) {
-        return new Query_1.Query(this).orderBy("\"".concat(child, "\""));
-    };
-    Reference.prototype.list = function () {
-        return this.database.list(this);
+        var queryRef = this.provider.orderByChild(child);
+        queryRef.path = this.path;
+        return queryRef;
     };
     Reference.prototype.get = function () {
-        return this.database.get(this);
+        return this.provider.get(this);
+    };
+    Reference.prototype.list = function () {
+        return this.provider.list(this);
     };
     return Reference;
 }());
