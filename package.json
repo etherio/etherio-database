@@ -29,7 +29,7 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "axois": "0.24.0"
+    "axois": "^0.19.2"
   },
   "directories": {
     "test": "tests"
