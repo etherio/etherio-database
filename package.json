@@ -21,7 +21,6 @@
   "author": "Ethereal <ethereal97@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/axios": "^0.14.0",
     "@types/node": "^16.11.8",
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.15",
@@ -30,7 +29,7 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "axois": "^0.24.0"
+    "axois": "0.24.0"
   },
   "directories": {
     "test": "tests"
