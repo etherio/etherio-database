@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 14
       - name: Installing Typedoc
-        run: npm install && npm install typedoc --save-dev
+        run: yarn && yarn add typedoc --save-dev
       - name: Generate Typedoc Docs
         run: npx typedoc --out docs src/main.ts 
       - name: Configure Git
